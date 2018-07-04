@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+
+    <script>
+        function passvalidate() {
+            var p1 = document.getElementById("p1").value;
+            if (p1.length>4) {
+                document.getElementById("tickpass").style.visibility = "visible";
+            }
+            else {
+                alert("Password should be atleast 5 characters");
+            }
+        }
+
+        function confpassvalidate() {
+            var p1 = document.getElementById("p1").value;
+            var p2 = document.getElementById("p2").value;
+            if (p1 != p2) {
+                alert("Password doesn't match");
+            }
+            else {
+                document.getElementById("tickconfpass").style.visibility = "visible";
+            }
+        }
+
+        function valid(){
+            var p1 = document.getElementById("p1").value;
+            var p2 = document.getElementById("p2").value;
+            if (p1 != p2) {
+                return false;
+            }
+        }
+    </script>
+
+    <style>
+    
+        #tickpass{
+            visibility: hidden;
+        }
+
+        #tickconfpass{
+            visibility: hidden;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <center>
+        <form onsubmit="return valid()" action="register.php" method="post">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <input type="text" name="name" required="true" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email Id</td>
+                    <td>
+                        <input type="text" name="user" required="true" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        <input type="password" id="p1" name="pass" required="true" onblur="passvalidate()"/>
+                        <img id="tickpass" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Free-Download.png" style="width: 20px; height:20px;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Confirm Password</td>
+                    <td>
+                        <input type="password" id="p2" name="cpass" required="true" onblur="confpassvalidate()"/> 
+                        <img id="tickconfpass" src="http://www.pngmart.com/files/3/Green-Tick-PNG-Free-Download.png" style="width: 20px; height:20px;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Select One</td>
+                    <td>
+                        <input type="radio" name="level" value="student" required="true"/>Student
+                        <input type="radio" name="level" value="teacher" />Teacher</td>
+                </tr>
+            </table>
+            <input type="submit" value="Create Account" />
+            <br>
+            <a href="index.html">Already a user? Sign In</a>
+
+        </form>
+    </center>
+
+</body>
+
+</html>
