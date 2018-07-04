@@ -23,8 +23,13 @@
     $sql = "insert into user values('$user','$pass','$name','$level')";
     $result = $conn->query($sql);
 
+    if($level=="student"){
+        header("refresh:0;url=studentdash.html" );
+    }
+    else if($level=="teacher"){
+        header("refresh:0;url=teacherdash.html" );
+    }
 
 
-    
         
 ?>

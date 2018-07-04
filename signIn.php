@@ -25,14 +25,14 @@
             while($row = $result->fetch_assoc()){
                 if ($row["password"]==$pass) {
                     if($row["level"]=="student"){
-                        echo "student";
+                        header("refresh:0;url=studentdash.html" );
                     }
-                    if($row["level"]=="teacher"){
-                        echo "teacher";
+                    else if($row["level"]=="teacher"){
+                        header("refresh:0;url=teacherdash.html" );
                     }
                 } else {
                     echo "Email Id or Password is incorrect";
-                    header("refresh:1;url=index.html" );
+                    header("refresh:2;url=index.html" );
 
                 }
             }
