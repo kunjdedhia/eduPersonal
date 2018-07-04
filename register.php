@@ -20,8 +20,10 @@
     //Query
     $sql = "Use edupersonal";
     $result = $conn->query($sql);
-    $sql = "insert into users values('$user','$pass','$name','$level')";
+    $sql = "insert into user values('$user','$pass','$name','$level')";
     $result = $conn->query($sql);
+
+
 
     
         
