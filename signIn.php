@@ -17,7 +17,7 @@
     //Query
     $sql = "Use edupersonal";
     $result = $conn->query($sql);
-    $sql = "select password,level from user where email='$user'";
+    $sql = "select password, level from user where email='$user'";
     $result = $conn->query($sql);
 
     if($result->num_rows>0){
