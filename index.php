@@ -12,8 +12,12 @@
 
 <body>
 
+    <?php
+        session_start();
+    ?>
+
     <center>
-        <form action="signIn.php" method="post">
+        <form action="logIn.php" method="post">
             <table>
                 <tr>
                     <td>Email Id</td>
@@ -26,6 +30,12 @@
                     <td>
                         <input type="password" name="pass" required="true" />
                     </td>
+                </tr>
+                <tr>
+                    <td>Select One</td>
+                    <td>
+                        <input type="radio" name="level" value="student" required="true"/>Student
+                        <input type="radio" name="level" value="teacher" />Teacher</td>
                 </tr>
             </table>
             <input type="submit" value="Sign In" />

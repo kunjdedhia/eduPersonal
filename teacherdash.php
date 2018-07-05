@@ -13,7 +13,7 @@
 <body>
     <?php
         session_start();
-        echo "<center><h1>Welcome, ".$_SESSION["username"]."</h1></center>";
+        echo "<center><h1>Welcome, ".$_SESSION["username"]."</h1></center><br><br><br>";
 
         $server="localhost";
         $username="root";
@@ -29,18 +29,19 @@
 
         //Query
         $sql = "Use edupersonal";
-        $conn->query($sql);
-        $sql = "select admit.course, course.course_name, teacher.name from assign join course on (course.id=assign.course) join teacher on (assign.teacher=teacher.email) join admit on (course.id=admit.course) where student='".$_SESSION["email"]."'";
+        $result = $conn->query($sql);
+        $sql = "select student.name, admit.student from admit join student on (admit.student=student.email) join assign on (admit.course = assign.course) where teacher='".$_SESSION["email"]."'";
         $result = $conn->query($sql);
 
         if($result->num_rows>0){
                 //output
                 echo "<table border='1px'>";
                 while($row = $result->fetch_assoc()){
-                    echo "<tr><td>".$row["course"]."</td><td>".$row["course_name"]."</td><td>".$row["name"]."</td></tr>";
+                    echo "<tr><td>".$row["name"]."</td><td>".$row["student"]."</td></tr>";
                 }
                 echo "</table>";
             }
+
     ?>
 
 </body>
