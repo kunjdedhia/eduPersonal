@@ -7,7 +7,7 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+
 </head>
 
 <body>
@@ -30,18 +30,23 @@
         //Query
         $sql = "Use edupersonal";
         $conn->query($sql);
-        $sql = "select admit.course, course.course_name, teacher.name from assign join course on (course.id=assign.course) join teacher on (assign.teacher=teacher.email) join admit on (course.id=admit.course) where student='".$_SESSION["email"]."'";
+        $sql = "select admit.status, admit.course, course.course_name, teacher.name from assign join course on (course.id=assign.course) join teacher on (assign.teacher=teacher.email) join admit on (course.id=admit.course) where student='".$_SESSION["email"]."'";
         $result = $conn->query($sql);
 
         if($result->num_rows>0){
                 //output
-                echo "<table border='1px'>";
+                echo "<center><table border='1px'><tr><td style='text-align:center;vertical-align:middle; width:100px;'>Course ID</td><td style='text-align:center;vertical-align:middle; width:150px;'>Course Name</td><td style='text-align:center;vertical-align:middle; width:150px;'>Instructor Name</td><td style='text-align:center;vertical-align:middle; width:150px;'>Exam Status</td></tr>";
                 while($row = $result->fetch_assoc()){
-                    echo "<tr><td>".$row["course"]."</td><td>".$row["course_name"]."</td><td>".$row["name"]."</td></tr>";
+                    if ($row["status"]=="Take Exam" or $row["status"]==""){
+                        echo "<tr><td style='text-align:center;vertical-align:middle'>".$row["course"]."</td><td style='text-align:center;vertical-align:middle'>".$row["course_name"]."</td><td style='text-align:center;vertical-align:middle'>".$row["name"]."</td><td style='text-align:center;vertical-align:middle'><button type='button'>Take Exam</button></td></tr>";
+                    } else if ($row["status"]=="Exam Taken"){
+                        echo "<tr><td style='text-align:center;vertical-align:middle'>".$row["course"]."</td><td style='text-align:center;vertical-align:middle'>".$row["course_name"]."</td><td style='text-align:center;vertical-align:middle'>".$row["name"]."</td><td style='text-align:center;vertical-align:middle'>Exam Taken</td></tr>";
+                    }
                 }
-                echo "</table>";
+                echo "</table></center>";
             }
     ?>
 
 </body>
+
 </html>
