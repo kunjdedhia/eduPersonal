@@ -7,3 +7,5 @@ eduPersonal is an educational platform that gives students control over their ed
 eduPersonal has its own database of questions for a variety of courses that are offered at the institution and the database continues to diversify. 
 ## How I built it
 I began working on the project with scripting the user interface in HTML, CSS and JavaScript. The backend uses PHP and MariaDb for storage of questions. 
+## What's next for eduPersonal
+Having my own database of questions posed a challenge to scalability in the short run and a high cost for diversification. With a lot of thinking and even more effort, I could devise a web scraper to fetch questions dynamically. Once the platform works swiftly, I could run pilots at institutions and then push it to use. 
